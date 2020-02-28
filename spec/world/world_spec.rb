@@ -1,7 +1,7 @@
 require '././lib/world/world.rb'
 
 RSpec.describe GameOfLife::World do
-  before(:all) do
+  before(:each) do
     @world = GameOfLife::World.new
   end
 
@@ -20,6 +20,16 @@ RSpec.describe GameOfLife::World do
       @world.add_life(-4, 2)
       @world.kill_life(2, 2)
       expect(@world.life_array.include?([2, 2])).to be false
+    end
+  end
+
+  context 'find neighbor' do
+    it 'finds number of neighbor available for a life' do
+      @world.add_life(2, 2)
+      @world.add_life(1, 2)
+      @world.add_life(1, 1)
+      @world.add_life(-4, 2)
+      expect(@world.find_neighbor(0)).to eql(2)
     end
   end
 end
