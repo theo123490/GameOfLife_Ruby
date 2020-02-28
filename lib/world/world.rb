@@ -6,7 +6,11 @@ module GameOfLife
     end
 
     def add_life(x, y)
-      life_array << [x, y]
+      @life_array << [x, y]
+    end
+
+    def kill_life(x, y)
+      @life_array.delete([x, y])
     end
   end
 end
