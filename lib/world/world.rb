@@ -107,14 +107,24 @@ module GameOfLife
     end
 
     def who_live_list
-      new_life_array = []
+      new_life_array_list = []
       @life_array.each do |life|
         life_neighbor = find_neighbor(life[0], life[1])
         if [2, 3].include?(life_neighbor)
-          new_life_array << life
+          new_life_array_list << life
         end
       end
-      new_life_array
+      new_life_array_list
+    end
+
+    def update_life_array
+      new_life_array_list = []
+      will_live = who_live_list
+      new_life_array_list.concat(will_live)
+      newborn = reproduct_all
+      new_life_array_list.concat(newborn)
+      @life_array = new_life_array_list
+      remove_life_duplicate
     end
   end
 end

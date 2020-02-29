@@ -160,4 +160,27 @@ RSpec.describe GameOfLife::World do
       expect(new_life_array.include?([3, 1])).to be true
     end
   end
+
+  context 'update_life_array' do
+    it 'will update the life array' do
+      @world.add_life(0, 3)
+      @world.add_life(2, 3)
+      @world.add_life(1, 1)
+      @world.add_life(3, 2)
+      @world.add_life(3, 1)
+      @world.add_life(3, 0)
+
+      @world.update_life_array
+
+      expect(@world.life_array.include?([0, 3])).to be false
+      expect(@world.life_array.include?([1, 1])).to be false
+      expect(@world.life_array.include?([2, 3])).to be false
+      expect(@world.life_array.include?([3, 0])).to be false
+      expect(@world.life_array.include?([3, 2])).to be true
+      expect(@world.life_array.include?([3, 1])).to be true
+      expect(@world.life_array.include?([1, 2])).to be true
+      expect(@world.life_array.include?([2, 0])).to be true
+      expect(@world.life_array.include?([4, 1])).to be true
+    end
+  end
 end
