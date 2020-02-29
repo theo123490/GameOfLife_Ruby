@@ -104,7 +104,7 @@ RSpec.describe GameOfLife::World do
       expect(@world.life_array[-1]).to eql([2, 0])
     end
 
-    it 'dont add life when a location is more than 4 life' do
+    it 'dont add life when a location is more than 3 life' do
       @world.add_life(0, 2)
       @world.add_life(2, 0)
       @world.add_life(2, 1)
@@ -113,6 +113,19 @@ RSpec.describe GameOfLife::World do
       @world.reproduct(0, 2)
 
       expect(@world.life_array[-1]).to eql([0, 0])
+    end
+  end
+
+  context 'remove life duplicate' do
+    it 'remove any duplicate in the life_array' do
+      @world.add_life(0, 2)
+      @world.add_life(1, 2)
+      @world.add_life(2, 2)
+      @world.add_life(2, 2)
+
+      @world.remove_life_duplicate
+
+      expect(@world.life_array.length).to eql(3)
     end
   end
 end

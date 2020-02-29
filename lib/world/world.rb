@@ -91,5 +91,9 @@ module GameOfLife
         end
       end
     end
+
+    def remove_life_duplicate
+      @life_array = @life_array.uniq
+    end
   end
 end
