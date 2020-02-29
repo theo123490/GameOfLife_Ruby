@@ -5,7 +5,7 @@ class ReaderModule
   include Reader
 end
 
-file_location = File.join(File.dirname(__FILE__), 'input.csv')
+file_location = File.join(File.dirname(__FILE__), 'pulsar.csv')
 live_location = ReaderModule.new.csv_to_location(file_location)
 
 world = GameOfLife::World.new
@@ -18,5 +18,7 @@ loop do
   puts '********************************************'
   world.draw_array
   world.update_life_array
-  puts '******************************************,**'
+  $stdout.flush
+  puts '********************************************'
+  sleep(0.5)
 end
