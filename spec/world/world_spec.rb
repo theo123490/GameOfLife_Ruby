@@ -140,4 +140,24 @@ RSpec.describe GameOfLife::World do
       expect(@world.life_array.include?([4, 1])).to be true
     end
   end
+
+  context 'who_live_list' do
+    it 'any cell that have 2 or 3 neighbor live, everyone else will die' do
+      @world.add_life(0, 3)
+      @world.add_life(2, 3)
+      @world.add_life(1, 1)
+      @world.add_life(3, 2)
+      @world.add_life(3, 1)
+      @world.add_life(3, 0)
+
+      new_life_array = @world.who_live_list
+
+      expect(new_life_array.include?([0, 3])).to be false
+      expect(new_life_array.include?([1, 1])).to be false
+      expect(new_life_array.include?([2, 3])).to be false
+      expect(new_life_array.include?([3, 0])).to be false
+      expect(new_life_array.include?([3, 2])).to be true
+      expect(new_life_array.include?([3, 1])).to be true
+    end
+  end
 end

@@ -108,5 +108,16 @@ module GameOfLife
         add_life(new_life[0], new_life[1])
       end
     end
+
+    def who_live_list
+      new_life_array = []
+      @life_array.each do |life|
+        life_neighbor = find_neighbor(life[0], life[1])
+        if [2, 3].include?(life_neighbor)
+          new_life_array << life
+        end
+      end
+      new_life_array
+    end
   end
 end
