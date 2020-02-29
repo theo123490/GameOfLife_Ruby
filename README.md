@@ -22,4 +22,7 @@ rake coverage
 ```
 
 ## Run Instruction
-TBD
+To run do
+```
+ruby lib/main.rb
+```
