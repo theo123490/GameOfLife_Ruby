@@ -73,5 +73,23 @@ module GameOfLife
       direction = [up, up_right, right, down_right, down, down_left, left, up_left]
       direction
     end
+
+    def reproduct(reference_x, reference_y)
+      reference_surrounding = make_surrounding_array(reference_x, reference_y)
+      reference_surrounding.each do |possible_birth|
+        parent = 0
+        possible_birth_surrounding = make_surrounding_array(possible_birth[0], possible_birth[1])
+
+        possible_birth_surrounding.each do |available_parent_location|
+          if @life_array.include?(available_parent_location)
+            parent += 1
+          end
+        end
+
+        if parent == 3
+          add_life(possible_birth[0], possible_birth[1])
+        end
+      end
+    end
   end
 end

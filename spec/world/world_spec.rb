@@ -83,4 +83,36 @@ RSpec.describe GameOfLife::World do
       expect(@world.make_surrounding_array(x, y)).to eql(surrounding_array)
     end
   end
+
+  context 'reproduct' do
+    it 'add life when a location is surounded by 3 life' do
+      @world.add_life(0, 2)
+      @world.add_life(2, 0)
+      @world.add_life(2, 1)
+
+      @world.reproduct(0, 2)
+
+      expect(@world.life_array[-1]).to eql([1, 1])
+    end
+
+    it 'dont add life when a location is surounded less than 3 life' do
+      @world.add_life(0, 2)
+      @world.add_life(2, 0)
+
+      @world.reproduct(0, 2)
+
+      expect(@world.life_array[-1]).to eql([2, 0])
+    end
+
+    it 'dont add life when a location is more than 4 life' do
+      @world.add_life(0, 2)
+      @world.add_life(2, 0)
+      @world.add_life(2, 1)
+      @world.add_life(0, 0)
+
+      @world.reproduct(0, 2)
+
+      expect(@world.life_array[-1]).to eql([0, 0])
+    end
+  end
 end
