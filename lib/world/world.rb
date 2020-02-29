@@ -37,5 +37,17 @@ module GameOfLife
       end
       neighbor_count
     end
+
+    def find_extremes
+      x = []
+      y = []
+
+      @life_array.each do |life|
+        x << life[0]
+        y << life[1]
+      end
+
+      [x.min, x.max, y.min, y.max]
+    end
   end
 end

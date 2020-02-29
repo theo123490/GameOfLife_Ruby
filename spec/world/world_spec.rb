@@ -32,4 +32,14 @@ RSpec.describe GameOfLife::World do
       expect(@world.find_neighbor(0)).to eql(2)
     end
   end
+
+  context 'find extremes' do
+    it 'find the extreme position of all the life array' do
+      @world.add_life(2, 2)
+      @world.add_life(1, 2)
+      @world.add_life(1, 1)
+      @world.add_life(-4, 2)
+      expect(@world.find_extremes).to eql([-4, 2, 1, 2])
+    end
+  end
 end
