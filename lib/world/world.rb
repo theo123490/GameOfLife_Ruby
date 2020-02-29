@@ -13,11 +13,8 @@ module GameOfLife
       @life_array.delete([x, y])
     end
 
-    def find_neighbor(neighbor_n)
+    def find_neighbor(center_x, center_y)
       neighbor_count = 0
-
-      center_x = @life_array[neighbor_n][0]
-      center_y = @life_array[neighbor_n][1]
 
       direction = make_surrounding_array(center_x, center_y)
 

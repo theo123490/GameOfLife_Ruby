@@ -29,7 +29,7 @@ RSpec.describe GameOfLife::World do
       @world.add_life(1, 2)
       @world.add_life(1, 1)
       @world.add_life(-4, 2)
-      expect(@world.find_neighbor(0)).to eql(2)
+      expect(@world.find_neighbor(2, 2)).to eql(2)
     end
   end
 
