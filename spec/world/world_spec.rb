@@ -123,4 +123,21 @@ RSpec.describe GameOfLife::World do
       expect(@world.life_array.length).to eql(3)
     end
   end
+
+  context 'reproduct_all' do
+    it 'make all cells that can reproduct to reproduct' do
+      @world.add_life(0, 3)
+      @world.add_life(2, 3)
+      @world.add_life(1, 1)
+      @world.add_life(3, 2)
+      @world.add_life(3, 1)
+      @world.add_life(3, 0)
+
+      @world.reproduct_all
+
+      expect(@world.life_array.include?([1, 2])).to be true
+      expect(@world.life_array.include?([2, 0])).to be true
+      expect(@world.life_array.include?([4, 1])).to be true
+    end
+  end
 end

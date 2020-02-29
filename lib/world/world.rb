@@ -97,5 +97,19 @@ module GameOfLife
     def remove_life_duplicate
       @life_array = @life_array.uniq
     end
+
+    def reproduct_all
+      new_birth = []
+      @life_array.each do |life|
+        child = reproduct(life[0], life[1])
+        new_birth.concat(child)
+      end
+
+      new_birth = new_birth.uniq
+
+      new_birth.each do |new_life|
+        add_life(new_life[0], new_life[1])
+      end
+    end
   end
 end
