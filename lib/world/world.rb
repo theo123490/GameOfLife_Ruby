@@ -49,5 +49,18 @@ module GameOfLife
 
       [x.min, x.max, y.min, y.max]
     end
+
+    def draw_array
+      x_min, x_max, y_min, y_max = find_extremes
+      x_range = 1 + (x_max - x_min)
+      y_range = 1 + (y_max - y_min)
+
+      world_array = Array.new(y_range) { Array.new(x_range, 'o') }
+
+      @life_array.each do |life|
+        world_array[life[1] - y_min][life[0] - x_min] = 'x'
+      end
+      world_array.reverse
+    end
   end
 end

@@ -42,4 +42,15 @@ RSpec.describe GameOfLife::World do
       expect(@world.find_extremes).to eql([-4, 2, 1, 2])
     end
   end
+
+  context 'draw_array' do
+    it 'give array to be drawn of the given world state' do
+      @world.add_life(2, 2)
+      @world.add_life(1, 2)
+      @world.add_life(1, 1)
+      @world.add_life(-1, 2)
+      world_array = @world.draw_array
+      expect(world_array).to eql([%w[x o x x], %w[o o x o]])
+    end
+  end
 end
