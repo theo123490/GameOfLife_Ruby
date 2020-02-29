@@ -68,5 +68,19 @@ module GameOfLife
       array_map = array.map { |position| position.join(' ') }
       puts array_map
     end
+
+    def make_surrounding_array(center_x, center_y)
+      up = [center_x, center_y + 1]
+      up_right = [center_x + 1, center_y + 1]
+      right = [center_x + 1, center_y]
+      down_right = [center_x + 1, center_y - 1]
+      down = [center_x, center_y - 1]
+      down_left = [center_x - 1, center_y - 1]
+      left = [center_x - 1, center_y]
+      up_left = [center_x - 1, center_y + 1]
+
+      direction = [up, up_right, right, down_right, down, down_left, left, up_left]
+      direction
+    end
   end
 end

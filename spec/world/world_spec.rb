@@ -65,4 +65,22 @@ RSpec.describe GameOfLife::World do
       end.to output("x o x x\no o x o\n").to_stdout
     end
   end
+
+  context 'make_surrounding_array' do
+    it 'make an array that containts surrounding position' do
+      x = 0
+      y = 0
+
+      surrounding_array = [[0, 1],
+                           [1, 1],
+                           [1, 0],
+                           [1, -1],
+                           [0, -1],
+                           [-1, -1],
+                           [-1, 0],
+                           [-1, 1]]
+
+      expect(@world.make_surrounding_array(x, y)).to eql(surrounding_array)
+    end
+  end
 end
