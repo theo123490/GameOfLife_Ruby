@@ -1,17 +1,18 @@
 require_relative 'world/world.rb'
+require_relative 'reader/reader.rb'
+
+class ReaderModule
+  include Reader
+end
+
+file_location = File.join(File.dirname(__FILE__), 'input.csv')
+live_location = ReaderModule.new.csv_to_location(file_location)
 
 world = GameOfLife::World.new
-world.add_life(1, 0)
-world.add_life(1, 1)
-world.add_life(1, 2)
 
-world.add_life(5, 0)
-world.add_life(5, 1)
-world.add_life(5, 2)
-
-world.add_life(10, 5)
-world.add_life(11, 5)
-world.add_life(12, 5)
+live_location.each do |life|
+  world.add_life(life[0], life[1])
+end
 
 loop do
   puts '********************************************'

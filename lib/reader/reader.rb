@@ -10,7 +10,7 @@ module Reader
     csv.each do |row|
       j = 0
       row.each do |data|
-        if data == 'x'
+        if data == 'o'
           life_location << [i, j]
         end
         j += 1

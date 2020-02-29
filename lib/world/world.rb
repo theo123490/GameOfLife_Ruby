@@ -43,10 +43,10 @@ module GameOfLife
       x_range = 1 + (x_max - x_min)
       y_range = 1 + (y_max - y_min)
 
-      world_array = Array.new(y_range) { Array.new(x_range, 'o') }
+      world_array = Array.new(y_range) { Array.new(x_range, '.') }
 
       @life_array.each do |life|
-        world_array[life[1] - y_min][life[0] - x_min] = 'x'
+        world_array[life[1] - y_min][life[0] - x_min] = 'o'
       end
       world_array.reverse
     end
