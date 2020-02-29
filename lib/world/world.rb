@@ -75,11 +75,11 @@ module GameOfLife
     end
 
     def reproduct(reference_x, reference_y)
+      new_birth = []
       reference_surrounding = make_surrounding_array(reference_x, reference_y)
       reference_surrounding.each do |possible_birth|
         parent = 0
         possible_birth_surrounding = make_surrounding_array(possible_birth[0], possible_birth[1])
-
         possible_birth_surrounding.each do |available_parent_location|
           if @life_array.include?(available_parent_location)
             parent += 1
@@ -87,9 +87,11 @@ module GameOfLife
         end
 
         if parent == 3
-          add_life(possible_birth[0], possible_birth[1])
+          new_birth << [possible_birth[0], possible_birth[1]]
         end
       end
+      new_birth = new_birth.uniq
+      new_birth
     end
 
     def remove_life_duplicate
