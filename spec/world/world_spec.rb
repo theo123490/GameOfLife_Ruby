@@ -53,4 +53,16 @@ RSpec.describe GameOfLife::World do
       expect(world_array).to eql([%w[x o x x], %w[o o x o]])
     end
   end
+
+  context 'draw_array' do
+    it 'draw the array given' do
+      @world.add_life(2, 2)
+      @world.add_life(1, 2)
+      @world.add_life(1, 1)
+      @world.add_life(-1, 2)
+      expect do
+        @world.draw_array
+      end.to output("x o x x\no o x o\n").to_stdout
+    end
+  end
 end

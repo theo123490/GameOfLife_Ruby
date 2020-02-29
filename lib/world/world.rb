@@ -62,5 +62,11 @@ module GameOfLife
       end
       world_array.reverse
     end
+
+    def draw_array
+      array = array_to_draw
+      array_map = array.map { |position| position.join(' ') }
+      puts array_map
+    end
   end
 end
