@@ -19,16 +19,7 @@ module GameOfLife
       center_x = @life_array[neighbor_n][0]
       center_y = @life_array[neighbor_n][1]
 
-      up = [center_x, center_y + 1]
-      up_right = [center_x + 1, center_y + 1]
-      right = [center_x + 1, center_y]
-      down_right = [center_x + 1, center_y - 1]
-      down = [center_x, center_y - 1]
-      down_left = [center_x - 1, center_y - 1]
-      left = [center_x - 1, center_y]
-      up_left = [center_x, center_y + 1]
-
-      direction = [up, up_right, right, down_right, down, down_left, left, up_left]
+      direction = make_surrounding_array(center_x, center_y)
 
       direction.each do |direct|
         if @life_array.include?(direct)
