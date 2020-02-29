@@ -103,10 +103,7 @@ module GameOfLife
       end
 
       new_birth = new_birth.uniq
-
-      new_birth.each do |new_life|
-        add_life(new_life[0], new_life[1])
-      end
+      new_birth
     end
 
     def who_live_list
